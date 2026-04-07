@@ -524,13 +524,36 @@ a { color: inherit; text-decoration: none; }
   gap: 1.5rem;
 }
 
+/* ─── SKILL CARD ANIMATIONS ─── */
+@keyframes card-appear {
+  from { opacity: 0; transform: translateY(18px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+@keyframes card-scan {
+  from { top: 0;    opacity: 1; }
+  to   { top: 100%; opacity: 0.2; }
+}
+
+@keyframes level-flicker {
+  0%, 100% { opacity: 1; }
+  40%       { opacity: 0.2; }
+  60%       { opacity: 0.8; }
+}
+
 .evidence-card {
   background: var(--card);
   border: 1px solid var(--border);
   padding: 1.5rem;
   position: relative;
-  transition: border-color 0.3s, transform 0.3s;
   cursor: default;
+  opacity: 0;
+  transition: border-color 0.3s, transform 0.3s;
+  overflow: hidden;
+}
+
+.evidence-card.card-active {
+  animation: card-appear 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .evidence-card:hover {
@@ -546,6 +569,23 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.15em;
   display: block;
   margin-bottom: 0.75rem;
+}
+
+.card-scan-line {
+  position: absolute;
+  left: -1px; right: -1px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--amber), transparent);
+  top: 0;
+  animation: card-scan 0.65s ease forwards;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: 0 0 8px var(--amber);
+}
+
+.level-blink {
+  animation: level-flicker 0.2s steps(1) infinite;
+  color: var(--amber) !important;
 }
 
 .evidence-icon {
@@ -1060,6 +1100,10 @@ a { color: inherit; text-decoration: none; }
   .scan-line { display: none; }
   .board-strings line { animation: none; stroke-dashoffset: 0; }
   .board-note { animation: none; opacity: 1; }
+  .evidence-card { opacity: 1; }
+  .evidence-card.card-active { animation: none; }
+  .card-scan-line { display: none; }
+  .level-blink { animation: none; }
 }
 
 /* ─── RESPONSIVE ─── */
