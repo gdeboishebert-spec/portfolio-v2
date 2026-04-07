@@ -57,7 +57,7 @@ export default function Stats() {
 
         <div className="stats-grid">
           {stats.map((s, i) => (
-            <div key={i} className="stat-item fade-in" style={{ animationDelay: `${i * 0.15}s` }}>
+            <div key={i} className="stat-item stat-reveal" style={{ animationDelay: `${i * 0.15}s` }}>
               <div className="stat-top-bar" />
               <Counter target={s.value} suffix={s.suffix} />
               <div className="stat-label">{s.label}</div>
