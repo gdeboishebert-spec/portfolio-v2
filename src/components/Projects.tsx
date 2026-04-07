@@ -1,3 +1,9 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+
+type Phase = 'idle' | 'opening' | 'revealed'
+
 const projects = [
   {
     id: '001',
@@ -56,6 +62,84 @@ const projects = [
   },
 ]
 
+function CaseCard({
+  id, status, title, description, tags, stamp, link, linkLabel, delay,
+}: typeof projects[0] & { delay: number }) {
+  const [phase, setPhase] = useState<Phase>('idle')
+  const ref = useRef<HTMLDivElement>(null)
+  const triggered = useRef(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !triggered.current) {
+          triggered.current = true
+          setTimeout(() => {
+            setPhase('opening')
+            setTimeout(() => setPhase('revealed'), 900)
+          }, delay)
+        }
+      },
+      { threshold: 0.15 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [delay])
+
+  return (
+    <div
+      ref={ref}
+      className={`case-file${phase !== 'idle' ? ' case-file-active' : ''}${phase === 'revealed' ? ' case-file-revealed' : ''}`}
+    >
+      {phase !== 'idle' && (
+        <a href={link} target="_blank" rel="noopener noreferrer" className="case-overlay" aria-label={title} />
+      )}
+
+      <div className={`case-bar${phase === 'revealed' ? ' case-bar-lit' : ''}`} />
+
+      <div className="case-content">
+        {/* Opening overlay */}
+        {phase === 'opening' && (
+          <div className="case-opening-overlay" aria-hidden="true">
+            <span className="case-opening-text">DÉCLASSIFICATION EN COURS...</span>
+            <div className="case-opening-scan" />
+          </div>
+        )}
+
+        <div className={`case-inner${phase === 'revealed' ? ' case-inner-visible' : ''}`}>
+          <div className="case-meta">
+            <span className="case-id">AFFAIRE N° {id}</span>
+            <span className={`case-status ${status === 'open' ? 'status-open' : 'status-closed'}`}>
+              {status === 'open' ? 'EN COURS' : 'CLASSÉE'}
+            </span>
+          </div>
+          <div className="case-title">{title}</div>
+          <div className="case-description">{description}</div>
+          <div className="case-footer">
+            <div className="case-tags">
+              {tags.map(t => <span key={t} className="tag">{t}</span>)}
+            </div>
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="case-link"
+            >
+              {linkLabel} &rarr;
+            </a>
+          </div>
+        </div>
+
+        {phase === 'revealed' && (
+          <div className={`case-stamp case-stamp-drop ${status === 'open' ? 'stamp-open' : 'stamp-closed'}`}>
+            {stamp}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
 export default function Projects() {
   return (
     <section id="affaires" className="section">
@@ -66,37 +150,8 @@ export default function Projects() {
       </div>
 
       <div className="cases-grid">
-        {projects.map(p => (
-          <div key={p.id} className="case-file fade-in">
-            <a href={p.link} target="_blank" rel="noopener noreferrer" className="case-overlay" aria-label={p.title} />
-            <div className="case-bar" />
-            <div className="case-content">
-              <div className="case-meta">
-                <span className="case-id">AFFAIRE N° {p.id}</span>
-                <span className={`case-status ${p.status === 'open' ? 'status-open' : 'status-closed'}`}>
-                  {p.status === 'open' ? 'EN COURS' : 'CLASSÉE'}
-                </span>
-              </div>
-              <div className="case-title">{p.title}</div>
-              <div className="case-description">{p.description}</div>
-              <div className="case-footer">
-                <div className="case-tags">
-                  {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
-                </div>
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="case-link"
-                >
-                  {p.linkLabel} &rarr;
-                </a>
-              </div>
-              <div className={`case-stamp ${p.status === 'open' ? 'stamp-open' : 'stamp-closed'}`}>
-                {p.stamp}
-              </div>
-            </div>
-          </div>
+        {projects.map((p, i) => (
+          <CaseCard key={p.id} {...p} delay={i * 150} />
         ))}
       </div>
     </section>
