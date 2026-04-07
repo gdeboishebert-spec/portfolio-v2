@@ -1,6 +1,7 @@
 import Flashlight from '@/components/Flashlight'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
+import Stats from '@/components/Stats'
 import Skills from '@/components/Skills'
 import Projects from '@/components/Projects'
 import Timeline from '@/components/Timeline'
@@ -14,6 +15,7 @@ export default function Home() {
       <Flashlight />
       <Nav />
       <Hero />
+      <Stats />
       <Skills />
       <Projects />
       <Timeline />

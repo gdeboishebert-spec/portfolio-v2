@@ -5,6 +5,7 @@ import BoardBio from './BoardBio'
 export default function Hero() {
   return (
     <section id="profil" className="hero">
+      <div className="scan-line" aria-hidden="true" />
       <div className="crime-tape" aria-hidden="true">
         <div className="crime-tape-text">
           NE PAS FRANCHIR &nbsp;&bull;&nbsp; ZONE CLASSIFIÉE &nbsp;&bull;&nbsp; NE PAS FRANCHIR &nbsp;&bull;&nbsp; ZONE CLASSIFIÉE &nbsp;&bull;&nbsp;
