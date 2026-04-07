@@ -598,7 +598,34 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 1rem;
 }
 
+.case-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+
 .case-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.case-link {
+  font-family: var(--font-cutive-mono), monospace;
+  font-size: 0.7rem;
+  color: var(--amber);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--amber-dim);
+  padding-bottom: 1px;
+  transition: color 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+}
+
+.case-link:hover {
+  color: var(--paper);
+  border-color: var(--paper);
+}
 
 .tag {
   font-family: var(--font-cutive-mono), monospace;

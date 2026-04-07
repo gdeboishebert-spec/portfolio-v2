@@ -2,56 +2,57 @@ const projects = [
   {
     id: '001',
     status: 'open',
-    title: 'OPÉRATION PLAYCONNECT',
+    title: 'OPÉRATION EULEXIS',
     description:
-      "Développement d'une application de mise en réseau social sportif. L'objectif : connecter les sportifs amateurs entre eux et faciliter l'organisation de matchs improvisés. Une infrastructure sociale à fort potentiel de croissance, sous surveillance active.",
-    tags: ['Social', 'Sport', 'App Mobile', 'Networking'],
+      "Conception d'une application fitness propulsée par IA générative. Le système analyse le profil biométrique de l'utilisateur — âge, morphologie, objectifs — et génère des programmes d'entraînement entièrement personnalisés. Intégration de modèles de langage pour des recommandations en temps réel.",
+    tags: ['IA Générative', 'Fitness', 'Personnalisation', 'LLM'],
     stamp: 'ACTIF',
+    link: 'https://www.canva.com/design/DAG55Sv4CNw/view',
+    linkLabel: 'Voir la présentation',
   },
   {
     id: '002',
-    status: 'closed',
-    title: 'OPÉRATION BEÏTEA',
+    status: 'open',
+    title: 'OPÉRATION DRONE EVENTS',
     description:
-      "Mission de growth hacking conduite pour une marque parisienne de bubble tea. Infiltration des canaux digitaux, analyse des comportements d'achat, déploiement de stratégies d'acquisition ciblées. Résultats obtenus, dossier archivé.",
-    tags: ['Growth Hacking', 'Marketing Digital', 'Paris'],
-    stamp: 'CLASSÉE',
+      "Développement et déploiement d'un site professionnel pour une activité de prises de vues aériennes événementielles. Architecture Next.js, galerie de missions, formulaire de contact. Site en production — activité freelance déclarée depuis 3 ans.",
+    tags: ['Next.js', 'TypeScript', 'Vercel', 'Freelance'],
+    stamp: 'ACTIF',
+    link: 'https://drone-events.vercel.app',
+    linkLabel: 'Voir le site',
   },
   {
     id: '003',
     status: 'open',
-    title: 'OPÉRATION EULEXIS',
+    title: 'OPÉRATION PLAYCONNECT',
     description:
-      "Développement d'une application fitness alimentée par l'intelligence artificielle, capable de générer des programmes personnalisés selon le profil biométrique de l'utilisateur. Technologie de pointe, données sensibles, accès restreint.",
-    tags: ['IA', 'Fitness', 'Personnalisation', 'App'],
+      "Conception d'une application mobile de mise en réseau sportif. PlayConnect permet aux sportifs amateurs de trouver des partenaires géolocalisés, d'organiser des matchs improvisés et de rejoindre des équipes locales. Étude de marché, maquettes UX et pitch investisseurs réalisés.",
+    tags: ['App Mobile', 'UX/UI', 'Social', 'Sport'],
     stamp: 'ACTIF',
+    link: 'https://www.canva.com/design/DAG57Bufm6k/view',
+    linkLabel: 'Voir la présentation',
   },
   {
     id: '004',
     status: 'closed',
-    title: 'OPÉRATION CONCESSION',
+    title: 'OPÉRATION DATA ANALYSE',
     description:
-      "Conception et déploiement d'un système de gestion de base de données pour un réseau de concessions automobiles. Architecture SQL, structuration des flux de données, interface de consultation. Système opérationnel, mission accomplie.",
-    tags: ['SQL', 'PostgreSQL', 'Base de données', 'Automobile'],
+      "Analyse complète d'une base de données d'accidents routiers français : nettoyage, croisements statistiques et visualisation via Google Sheets et Looker Studio. Production de dashboards interactifs permettant d'identifier les zones à risque et les facteurs de dangerosité.",
+    tags: ['Google Sheets', 'Looker Studio', 'Data Viz', 'SQL'],
     stamp: 'CLASSÉE',
+    link: 'https://lookerstudio.google.com/u/0/reporting/51f5757a-9b66-47e2-8c7d-3a5bb7afa0d4',
+    linkLabel: 'Voir le dashboard',
   },
   {
     id: '005',
     status: 'closed',
-    title: 'OPÉRATION SÉZANE SECONDE MAIN',
+    title: 'OPÉRATION BEÏTEA',
     description:
-      "Extension de marque stratégique pour Sézane, orientée vers le marché de la mode de seconde main. Analyse de positionnement, étude de faisabilité et élaboration d'un plan de lancement. Rapport confidentiel remis aux commanditaires.",
-    tags: ['Mode', 'Stratégie', 'Durabilité', 'Brand'],
+      "Mission de growth hacking pour Beïtea, marque parisienne de bubble tea. Audit des canaux d'acquisition, analyse comportementale des clients et déploiement d'une stratégie digitale ciblée. Résultats mesurés sur 30 jours, rapport de performance remis à la direction.",
+    tags: ['Growth Hacking', 'Marketing Digital', 'Analytics', 'Paris'],
     stamp: 'CLASSÉE',
-  },
-  {
-    id: '006',
-    status: 'open',
-    title: 'OPÉRATION DRONE EVENTS',
-    description:
-      "Création d'un site professionnel sous Next.js pour une activité de services drone événementiels. Vitrine commerciale, galerie de missions, formulaire de contact sécurisé. Activité déclarée — surveillance en cours par la brigade.",
-    tags: ['Next.js', 'Drone', 'Événementiel', 'Freelance'],
-    stamp: 'ACTIF',
+    link: 'https://www.canva.com/design/DAG5tvEoqWE/view',
+    linkLabel: 'Voir la présentation',
   },
 ]
 
@@ -77,8 +78,18 @@ export default function Projects() {
               </div>
               <div className="case-title">{p.title}</div>
               <div className="case-description">{p.description}</div>
-              <div className="case-tags">
-                {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
+              <div className="case-footer">
+                <div className="case-tags">
+                  {p.tags.map(t => <span key={t} className="tag">{t}</span>)}
+                </div>
+                <a
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="case-link"
+                >
+                  {p.linkLabel} &rarr;
+                </a>
               </div>
               <div className={`case-stamp ${p.status === 'open' ? 'stamp-open' : 'stamp-closed'}`}>
                 {p.stamp}
