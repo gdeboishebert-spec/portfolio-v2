@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Typewriter from './Typewriter'
 
 export default function Hero() {
@@ -16,7 +17,13 @@ export default function Hero() {
           <div className="dossier-photo-wrap">
             <div className="pin" />
             <div className="dossier-photo">
-              <span className="photo-initials">GDB</span>
+              <Image
+                src="/photo.jpg"
+                alt="Gaspard de Boishebert"
+                fill
+                style={{ objectFit: 'cover', objectPosition: 'center top', filter: 'grayscale(20%) contrast(1.05)' }}
+                priority
+              />
               <div className="photo-label">SUJET IDENTIFIÉ</div>
             </div>
           </div>
