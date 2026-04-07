@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Typewriter from './Typewriter'
+import BoardBio from './BoardBio'
 
 export default function Hero() {
   return (
@@ -66,17 +67,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-bio fade-in">
-          <p>
-            Le sujet est un individu de 18 ans, dont les activités gravitent autour de l&apos;intelligence
-            artificielle et de l&apos;entrepreneuriat numérique. Ses investigations personnelles l&apos;ont
-            conduit à maîtriser des outils d&apos;automatisation avancés et à développer plusieurs opérations
-            à fort impact commercial. Sa capacité à combiner technologie de pointe et vision stratégique
-            le classe parmi les profils les plus intéressants de sa génération. Par ailleurs, une passion
-            déclarée pour les drones — exercée depuis plus de 3 ans — laisse supposer un intérêt prononcé
-            pour la surveillance et l&apos;exploration de terrain.
-          </p>
-        </div>
+        <BoardBio />
       </div>
     </section>
   )
