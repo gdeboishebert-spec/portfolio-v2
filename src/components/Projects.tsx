@@ -68,6 +68,7 @@ export default function Projects() {
       <div className="cases-grid">
         {projects.map(p => (
           <div key={p.id} className="case-file fade-in">
+            <a href={p.link} target="_blank" rel="noopener noreferrer" className="case-overlay" aria-label={p.title} />
             <div className="case-bar" />
             <div className="case-content">
               <div className="case-meta">
