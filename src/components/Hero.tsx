@@ -4,7 +4,7 @@ import BoardBio from './BoardBio'
 
 export default function Hero() {
   return (
-    <section id="profil" className="hero">
+    <section id="hero" className="hero">
       <div className="scan-line" aria-hidden="true" />
       <div className="crime-tape" aria-hidden="true">
         <div className="crime-tape-text">
