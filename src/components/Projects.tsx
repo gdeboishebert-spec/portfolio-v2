@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 
 type Phase = 'idle' | 'opening' | 'revealed'
 
@@ -86,19 +86,41 @@ function CaseCard({
     return () => observer.disconnect()
   }, [delay])
 
+  // 3D tilt on hover
+  const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    if (phase !== 'revealed') return
+    const el = e.currentTarget
+    const rect = el.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    const rx = (0.5 - y) * 10
+    const ry = (x - 0.5) * 10
+    el.style.transform = `perspective(800px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`
+    el.style.setProperty('--gx', `${x * 100}%`)
+    el.style.setProperty('--gy', `${y * 100}%`)
+  }, [phase])
+
+  const onMouseLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    e.currentTarget.style.transform = ''
+  }, [])
+
   return (
     <div
       ref={ref}
       className={`case-file${phase !== 'idle' ? ' case-file-active' : ''}${phase === 'revealed' ? ' case-file-revealed' : ''}`}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
     >
       {phase !== 'idle' && (
         <a href={link} target="_blank" rel="noopener noreferrer" className="case-overlay" aria-label={title} />
       )}
 
+      {/* Glare overlay (follows mouse in 3D mode) */}
+      <div className="case-glare" />
+
       <div className={`case-bar${phase === 'revealed' ? ' case-bar-lit' : ''}`} />
 
       <div className="case-content">
-        {/* Opening overlay */}
         {phase === 'opening' && (
           <div className="case-opening-overlay" aria-hidden="true">
             <span className="case-opening-text">DÉCLASSIFICATION EN COURS...</span>

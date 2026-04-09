@@ -26,6 +26,8 @@ export default function Hero() {
                 style={{ objectFit: 'cover', objectPosition: 'center top', filter: 'grayscale(20%) contrast(1.05)' }}
                 priority
               />
+              {/* Polaroid developing overlay */}
+              <div className="photo-develop" aria-hidden="true" />
               <div className="photo-label">SUJET IDENTIFIÉ</div>
             </div>
           </div>

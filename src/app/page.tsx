@@ -1,3 +1,5 @@
+import IntroSequence from '@/components/IntroSequence'
+import Surveillance from '@/components/Surveillance'
 import Flashlight from '@/components/Flashlight'
 import Nav from '@/components/Nav'
 import Hero from '@/components/Hero'
@@ -12,6 +14,8 @@ import FadeObserver from '@/components/FadeObserver'
 export default function Home() {
   return (
     <>
+      <IntroSequence />
+      <Surveillance />
       <Flashlight />
       <Nav />
       <Hero />

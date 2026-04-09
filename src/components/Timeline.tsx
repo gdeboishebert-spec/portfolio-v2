@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+
 const entries = [
   {
     date: '2024 — EN COURS',
@@ -25,6 +29,37 @@ const entries = [
   },
 ]
 
+function TimelineEntry({ entry, delay }: { entry: typeof entries[0]; delay: number }) {
+  const [visible, setVisible] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+  const triggered = useRef(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting && !triggered.current) {
+          triggered.current = true
+          setTimeout(() => setVisible(true), delay)
+        }
+      },
+      { threshold: 0.15 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [delay])
+
+  return (
+    <div ref={ref} className={`timeline-item${visible ? ' tl-visible' : ''}`}>
+      <div className="timeline-date">{entry.date}</div>
+      <div className="timeline-role">{entry.role}</div>
+      <div className="timeline-org">{entry.org}</div>
+      <div className="timeline-desc">{entry.desc}</div>
+    </div>
+  )
+}
+
 export default function Timeline() {
   return (
     <section id="parcours" className="section">
@@ -36,12 +71,7 @@ export default function Timeline() {
 
       <div className="timeline">
         {entries.map((e, i) => (
-          <div key={i} className="timeline-item fade-in">
-            <div className="timeline-date">{e.date}</div>
-            <div className="timeline-role">{e.role}</div>
-            <div className="timeline-org">{e.org}</div>
-            <div className="timeline-desc">{e.desc}</div>
-          </div>
+          <TimelineEntry key={i} entry={e} delay={i * 200} />
         ))}
       </div>
     </section>
