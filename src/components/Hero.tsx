@@ -43,29 +43,62 @@ export default function Hero() {
             </h1>
             <p className="suspect-alias">ALIAS : &ldquo;L&apos;ARCHITECTE DE L&apos;IA&rdquo;</p>
 
-            <div className="info-grid">
-              <span className="info-label">Âge</span>
-              <span className="info-value">18 ans</span>
+            <div className="op-file">
+              <div className="op-file-header">
+                <span className="op-file-tag">▶ DONNÉES OPÉRATEUR</span>
+                <span className="op-file-id">GDB-2025-A</span>
+              </div>
 
-              <span className="info-label">Statut</span>
-              <Typewriter />
+              <div className="op-row" style={{ animationDelay: '0.05s' }}>
+                <span className="op-code">F-01</span>
+                <span className="op-label">ÂGE</span>
+                <span className="op-sep" />
+                <span className="op-value">18 ANS</span>
+              </div>
 
-              <span className="info-label">Base opérationnelle</span>
-              <span className="info-value">Eugenia School &mdash; Paris</span>
+              <div className="op-row" style={{ animationDelay: '0.1s' }}>
+                <span className="op-code">F-02</span>
+                <span className="op-label">STATUT</span>
+                <span className="op-sep" />
+                <Typewriter />
+              </div>
 
-              <span className="info-label">Spécialité</span>
-              <span className="info-value">IA Appliquée aux Affaires</span>
+              <div className="op-row" style={{ animationDelay: '0.15s' }}>
+                <span className="op-code">F-03</span>
+                <span className="op-label">BASE OPS.</span>
+                <span className="op-sep" />
+                <span className="op-value">Eugenia School &mdash; Paris</span>
+              </div>
 
-              <span className="info-label">Activités déclarées</span>
-              <span className="info-value">
-                Pilote de drone &mdash;{' '}
-                <span className="redacted" title="révéler">Entrepreneuriat</span>
-              </span>
+              <div className="op-row" style={{ animationDelay: '0.2s' }}>
+                <span className="op-code">F-04</span>
+                <span className="op-label">SPÉCIALITÉ</span>
+                <span className="op-sep" />
+                <span className="op-value">IA Appliquée aux Affaires</span>
+              </div>
 
-              <span className="info-label">Niveau de menace</span>
-              <span className="info-value" style={{ color: 'var(--amber)' }}>
-                ⬛⬛⬛⬜⬜ ÉLEVÉ
-              </span>
+              <div className="op-row" style={{ animationDelay: '0.25s' }}>
+                <span className="op-code">F-05</span>
+                <span className="op-label">ACTIVITÉS</span>
+                <span className="op-sep" />
+                <span className="op-value">
+                  Drone &mdash; <span className="redacted" title="révéler">Entrepreneuriat</span>
+                </span>
+              </div>
+
+              <div className="op-row op-row-threat" style={{ animationDelay: '0.3s' }}>
+                <span className="op-code">F-06</span>
+                <span className="op-label">MENACE</span>
+                <span className="op-sep" />
+                <div className="op-threat">
+                  <div className="op-threat-bar">
+                    {[1,2,3,4,5].map(i => (
+                      <div key={i} className={`op-seg${i <= 3 ? ' op-seg-on' : ''}`} />
+                    ))}
+                  </div>
+                  <span className="op-threat-label">ÉLEVÉ</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
