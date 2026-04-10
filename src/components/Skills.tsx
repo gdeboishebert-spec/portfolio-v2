@@ -1,24 +1,35 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import type { IconType } from 'react-icons'
+import {
+  SiGooglegemini,
+  SiMake,
+  SiMistralai,
+  SiPostgresql,
+  SiGooglesheets,
+  SiGithub,
+  SiLooker,
+  SiDrone,
+} from 'react-icons/si'
 
 type Phase = 'idle' | 'scanning' | 'done'
 
-const skills = [
-  { num: '001', icon: '🤖', name: 'Google Gemini',   level: 90, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '002', icon: '⚙️', name: 'Make (Integromat)', level: 85, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '003', icon: '🧠', name: 'Mistral AI',       level: 80, label: 'OPÉRATIONNEL' },
-  { num: '004', icon: '🗄️', name: 'SQL / PostgreSQL', level: 75, label: 'OPÉRATIONNEL' },
-  { num: '005', icon: '📊', name: 'Google Sheets',    level: 88, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '006', icon: '🚁', name: 'Pilotage Drone',   level: 92, label: 'EXPERT — 3+ ANS' },
-  { num: '007', icon: '💻', name: 'GitHub',           level: 78, label: 'OPÉRATIONNEL' },
-  { num: '008', icon: '📈', name: 'Looker Studio',    level: 72, label: 'OPÉRATIONNEL' },
+const skills: { num: string; Icon: IconType; name: string; level: number; label: string }[] = [
+  { num: '001', Icon: SiGooglegemini,  name: 'Google Gemini',    level: 90, label: 'MAÎTRISE CONFIRMÉE' },
+  { num: '002', Icon: SiMake,          name: 'Make (Integromat)', level: 85, label: 'MAÎTRISE CONFIRMÉE' },
+  { num: '003', Icon: SiMistralai,     name: 'Mistral AI',        level: 80, label: 'OPÉRATIONNEL' },
+  { num: '004', Icon: SiPostgresql,    name: 'SQL / PostgreSQL',  level: 75, label: 'OPÉRATIONNEL' },
+  { num: '005', Icon: SiGooglesheets,  name: 'Google Sheets',     level: 88, label: 'MAÎTRISE CONFIRMÉE' },
+  { num: '006', Icon: SiDrone,         name: 'Pilotage Drone',    level: 92, label: 'EXPERT — 3+ ANS' },
+  { num: '007', Icon: SiGithub,        name: 'GitHub',            level: 78, label: 'OPÉRATIONNEL' },
+  { num: '008', Icon: SiLooker,        name: 'Looker Studio',     level: 72, label: 'OPÉRATIONNEL' },
 ]
 
 function SkillCard({
-  num, icon, name, level, label, delay,
+  num, Icon, name, level, label, delay,
 }: {
-  num: string; icon: string; name: string
+  num: string; Icon: IconType; name: string
   level: number; label: string; delay: number
 }) {
   const [phase, setPhase] = useState<Phase>('idle')
@@ -53,7 +64,7 @@ function SkillCard({
       data-num={num}
     >
       {phase === 'scanning' && <div className="card-scan-line" aria-hidden="true" />}
-      <span className="evidence-icon">{icon}</span>
+      <span className="evidence-icon"><Icon /></span>
       <div className="evidence-name">{name}</div>
       <div className="evidence-bar-track">
         <div className="evidence-bar-fill" style={{ width: `${barWidth}%` }} />

@@ -14,6 +14,7 @@ const projects = [
     tags: ['IA Générative', 'Fitness', 'Personnalisation', 'LLM'],
     stamp: 'ACTIF',
     link: 'https://www.canva.com/design/DAG55Sv4CNw/view',
+    embedUrl: 'https://www.canva.com/design/DAG55Sv4CNw/view?embed',
     linkLabel: 'Voir la présentation',
   },
   {
@@ -25,6 +26,7 @@ const projects = [
     tags: ['Next.js', 'TypeScript', 'Vercel', 'Freelance'],
     stamp: 'ACTIF',
     link: 'https://drone-events.vercel.app',
+    embedUrl: null,
     linkLabel: 'Voir le site',
   },
   {
@@ -36,6 +38,7 @@ const projects = [
     tags: ['App Mobile', 'UX/UI', 'Social', 'Sport'],
     stamp: 'ACTIF',
     link: 'https://www.canva.com/design/DAG57Bufm6k/view',
+    embedUrl: 'https://www.canva.com/design/DAG57Bufm6k/view?embed',
     linkLabel: 'Voir la présentation',
   },
   {
@@ -47,6 +50,7 @@ const projects = [
     tags: ['Google Sheets', 'Looker Studio', 'Data Viz', 'SQL'],
     stamp: 'CLASSÉE',
     link: 'https://lookerstudio.google.com/u/0/reporting/51f5757a-9b66-47e2-8c7d-3a5bb7afa0d4',
+    embedUrl: null,
     linkLabel: 'Voir le dashboard',
   },
   {
@@ -58,13 +62,62 @@ const projects = [
     tags: ['Growth Hacking', 'Marketing Digital', 'Analytics', 'Paris'],
     stamp: 'CLASSÉE',
     link: 'https://www.canva.com/design/DAG5tvEoqWE/view',
+    embedUrl: 'https://www.canva.com/design/DAG5tvEoqWE/view?embed',
     linkLabel: 'Voir la présentation',
   },
 ]
 
+// ─── MODAL CANVA ──────────────────────────────────────────────────────────────
+
+function CanvaModal({
+  embedUrl,
+  title,
+  onClose,
+}: {
+  embedUrl: string
+  title: string
+  onClose: () => void
+}) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', onKey)
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+    }
+  }, [onClose])
+
+  return (
+    <div className="canva-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={title}>
+      <div className="canva-modal" onClick={(e) => e.stopPropagation()}>
+        <div className="canva-modal-header">
+          <span className="canva-modal-label">DOSSIER DÉCLASSIFIÉ</span>
+          <span className="canva-modal-title">{title}</span>
+          <button className="canva-modal-close" onClick={onClose} aria-label="Fermer">
+            ✕ FERMER LE DOSSIER
+          </button>
+        </div>
+        <div className="canva-modal-body">
+          <iframe
+            src={embedUrl}
+            className="canva-iframe"
+            allowFullScreen
+            title={title}
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// ─── CASE CARD ────────────────────────────────────────────────────────────────
+
 function CaseCard({
-  id, status, title, description, tags, stamp, link, linkLabel, delay,
-}: typeof projects[0] & { delay: number }) {
+  id, status, title, description, tags, stamp, link, embedUrl, linkLabel, delay,
+  onOpenEmbed,
+}: typeof projects[0] & { delay: number; onOpenEmbed: (url: string, title: string) => void }) {
   const [phase, setPhase] = useState<Phase>('idle')
   const ref = useRef<HTMLDivElement>(null)
   const triggered = useRef(false)
@@ -86,7 +139,6 @@ function CaseCard({
     return () => observer.disconnect()
   }, [delay])
 
-  // 3D tilt on hover
   const onMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     if (phase !== 'revealed') return
     const el = e.currentTarget
@@ -104,6 +156,13 @@ function CaseCard({
     e.currentTarget.style.transform = ''
   }, [])
 
+  const handleLinkClick = (e: React.MouseEvent) => {
+    if (embedUrl) {
+      e.preventDefault()
+      onOpenEmbed(embedUrl, title)
+    }
+  }
+
   return (
     <div
       ref={ref}
@@ -111,13 +170,11 @@ function CaseCard({
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
-      {phase !== 'idle' && (
+      {phase !== 'idle' && !embedUrl && (
         <a href={link} target="_blank" rel="noopener noreferrer" className="case-overlay" aria-label={title} />
       )}
 
-      {/* Glare overlay (follows mouse in 3D mode) */}
       <div className="case-glare" />
-
       <div className={`case-bar${phase === 'revealed' ? ' case-bar-lit' : ''}`} />
 
       <div className="case-content">
@@ -143,9 +200,10 @@ function CaseCard({
             </div>
             <a
               href={link}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={embedUrl ? undefined : '_blank'}
+              rel={embedUrl ? undefined : 'noopener noreferrer'}
               className="case-link"
+              onClick={handleLinkClick}
             >
               {linkLabel} &rarr;
             </a>
@@ -162,20 +220,42 @@ function CaseCard({
   )
 }
 
-export default function Projects() {
-  return (
-    <section id="affaires" className="section">
-      <div className="section-header">
-        <span className="section-number">§ 03</span>
-        <h2 className="section-title">Affaires Classées &amp; En Cours</h2>
-        <div className="section-line" />
-      </div>
+// ─── PROJECTS ─────────────────────────────────────────────────────────────────
 
-      <div className="cases-grid">
-        {projects.map((p, i) => (
-          <CaseCard key={p.id} {...p} delay={i * 150} />
-        ))}
-      </div>
-    </section>
+export default function Projects() {
+  const [modal, setModal] = useState<{ url: string; title: string } | null>(null)
+
+  const openEmbed = useCallback((url: string, title: string) => {
+    setModal({ url, title })
+  }, [])
+
+  const closeEmbed = useCallback(() => {
+    setModal(null)
+  }, [])
+
+  return (
+    <>
+      <section id="affaires" className="section">
+        <div className="section-header">
+          <span className="section-number">§ 03</span>
+          <h2 className="section-title">Affaires Classées &amp; En Cours</h2>
+          <div className="section-line" />
+        </div>
+
+        <div className="cases-grid">
+          {projects.map((p, i) => (
+            <CaseCard key={p.id} {...p} delay={i * 150} onOpenEmbed={openEmbed} />
+          ))}
+        </div>
+      </section>
+
+      {modal && (
+        <CanvaModal
+          embedUrl={modal.url}
+          title={modal.title}
+          onClose={closeEmbed}
+        />
+      )}
+    </>
   )
 }
