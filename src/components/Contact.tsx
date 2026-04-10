@@ -90,11 +90,7 @@ export default function Contact() {
               gasparddeboishebert<br />@gmail.com
             </div>
           </a>
-          <a className="contact-item" href="tel:+33677427827">
-            <div className="contact-label">Ligne Directe</div>
-            <div className="contact-value">06 77 42 78 27</div>
-          </a>
-          <a
+          <
             className="contact-item"
             href="https://www.linkedin.com/in/gaspard-de-boishebert-1a4579283"
             target="_blank"
