@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react'
 const stats = [
   { value: 4,  suffix: '',  label: 'EXPÉRIENCES',  sub: 'PROFESSIONNELLES DÉCLARÉES' },
   { value: 3,  suffix: '+', label: 'ANS',           sub: 'FREELANCE EN ACTIVITÉ'      },
-  { value: 92, suffix: '%', label: 'DE PRÉCISION',  sub: 'IA VOCALE — PROJET LVMH'   },
+  { value: 5,  suffix: '',  label: 'PROJETS',       sub: 'LIVRÉS & DOCUMENTÉS'        },
   { value: 2,  suffix: '',  label: 'LANGUES',       sub: 'ANGLAIS B1/B2 · ESPAGNOL B1' },
 ]
 
