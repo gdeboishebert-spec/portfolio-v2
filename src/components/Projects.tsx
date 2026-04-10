@@ -202,20 +202,31 @@ const projects: Project[] = [
 function CanvaModal({ embedUrl, title, onClose, directLink }: {
   embedUrl: string; title: string; onClose: () => void; directLink: string
 }) {
-  const [failed, setFailed] = useState(false)
+  const [status, setStatus] = useState<'loading' | 'ok' | 'blocked'>('loading')
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
-    // Fallback si l'iframe ne charge pas en 6s
-    const timeout = setTimeout(() => setFailed(true), 6000)
-    return () => {
-      document.removeEventListener('keydown', onKey)
-      document.body.style.overflow = ''
-      clearTimeout(timeout)
-    }
+    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
   }, [onClose])
+
+  const handleLoad = (e: React.SyntheticEvent<HTMLIFrameElement>) => {
+    // Si Canva renvoie une erreur (403/404), l'iframe charge quand même mais
+    // on ne peut pas lire son contenu (CORS). On tente de détecter via contentDocument.
+    try {
+      const doc = (e.target as HTMLIFrameElement).contentDocument
+      // Si on peut lire le titre et qu'il contient "Interdit" ou "Error", c'est bloqué
+      if (doc && (doc.title.includes('Interdit') || doc.title.includes('Error') || doc.title.includes('403'))) {
+        setStatus('blocked')
+      } else {
+        setStatus('ok')
+      }
+    } catch {
+      // CORS → contenu cross-origin chargé normalement → OK
+      setStatus('ok')
+    }
+  }
 
   return (
     <div className="canva-overlay" onClick={onClose} role="dialog" aria-modal="true" aria-label={title}>
@@ -226,26 +237,34 @@ function CanvaModal({ embedUrl, title, onClose, directLink }: {
           <button className="canva-modal-close" onClick={onClose} aria-label="Fermer">✕ FERMER</button>
         </div>
         <div className="canva-modal-body">
-          {failed ? (
+          {status === 'blocked' ? (
             <div className="canva-fallback">
               <span className="canva-fallback-text">
-                La présentation ne peut pas s&apos;afficher ici.<br />
-                Active le partage public sur Canva ou consulte-la directement.
+                Canva bloque l&apos;intégration (accès restreint).<br />
+                Sur Canva : <strong>Partager → Plus → Intégrer → Activer le lien public</strong>
               </span>
               <a href={directLink} target="_blank" rel="noopener noreferrer" className="canva-fallback-btn">
                 OUVRIR SUR CANVA →
               </a>
             </div>
           ) : (
-            <iframe
-              src={embedUrl}
-              className="canva-iframe"
-              allowFullScreen
-              title={title}
-              loading="lazy"
-              onLoad={() => setFailed(false)}
-              onError={() => setFailed(true)}
-            />
+            <>
+              <iframe
+                src={embedUrl}
+                className="canva-iframe"
+                allowFullScreen
+                title={title}
+                loading="lazy"
+                onLoad={handleLoad}
+                onError={() => setStatus('blocked')}
+              />
+              {/* Lien de secours toujours visible en bas */}
+              <div className="canva-direct-link">
+                <a href={directLink} target="_blank" rel="noopener noreferrer">
+                  Problème d&apos;affichage ? Ouvrir sur Canva →
+                </a>
+              </div>
+            </>
           )}
         </div>
       </div>
