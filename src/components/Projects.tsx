@@ -40,22 +40,22 @@ const projects: Project[] = [
       {
         num: '01',
         title: 'IDENTIFICATION DU PROBLÈME',
-        desc: "Les programmes fitness génériques ignorent les profils individuels. Constat : la majorité des utilisateurs abandonnent faute de personnalisation. Définition du besoin cible.",
+        desc: "Les <strong>programmes fitness génériques</strong> ignorent les profils individuels. Constat : la majorité des utilisateurs abandonnent faute de <strong>personnalisation</strong>. Définition précise du besoin cible.",
       },
       {
         num: '02',
         title: 'ARCHITECTURE DU SYSTÈME IA',
-        desc: "Conception d'un pipeline LLM : collecte du profil biométrique (âge, morphologie, objectifs) → traitement → génération de programmes structurés et progressifs.",
+        desc: "Conception d'un <strong>pipeline LLM</strong> : collecte du <strong>profil biométrique</strong> (âge, morphologie, objectifs) → traitement → génération de programmes structurés et progressifs.",
       },
       {
         num: '03',
         title: 'PROMPT ENGINEERING',
-        desc: "Itération intensive sur les prompts pour contraindre le modèle à produire des réponses exploitables, formatées et adaptées à chaque profil utilisateur.",
+        desc: "Itération intensive sur les prompts pour contraindre le modèle à produire des réponses <strong>exploitables et formatées</strong>, adaptées à chaque profil utilisateur.",
       },
       {
         num: '04',
         title: 'PITCH & PRÉSENTATION',
-        desc: "Formalisation en deck investisseurs : maquettes UX, business model, projections, démonstration du prototype. Présenté devant jury à Eugenia School.",
+        desc: "Formalisation en <strong>deck investisseurs</strong> : maquettes UX, business model, projections. Présenté devant jury à <strong>Eugenia School</strong>.",
       },
     ],
   },
@@ -74,22 +74,22 @@ const projects: Project[] = [
       {
         num: '01',
         title: 'CHOIX DE LA STACK',
-        desc: "Next.js pour les performances SEO et le rendu serveur. TypeScript pour la fiabilité du code. Vercel pour le déploiement continu automatisé.",
+        desc: "<strong>Next.js</strong> pour les performances SEO et le rendu serveur. <strong>TypeScript</strong> pour la fiabilité du code. <strong>Vercel</strong> pour le déploiement continu automatisé.",
       },
       {
         num: '02',
         title: 'DÉVELOPPEMENT',
-        desc: "Galerie de missions photographiques, formulaire de contact, pages de services détaillées. Design sobre et professionnel orienté acquisition client.",
+        desc: "<strong>Galerie de missions</strong> photographiques, <strong>formulaire de contact</strong>, pages de services détaillées. Design sobre et professionnel orienté acquisition client.",
       },
       {
         num: '03',
         title: 'MISE EN PRODUCTION',
-        desc: "Déploiement sur Vercel, configuration du domaine. Optimisation des performances (Core Web Vitals), référencement naturel.",
+        desc: "Déploiement sur Vercel, configuration du domaine. Optimisation des <strong>Core Web Vitals</strong> et du <strong>référencement naturel</strong>.",
       },
       {
         num: '04',
         title: 'ACTIVITÉ COMMERCIALE',
-        desc: "Site utilisé activement pour acquérir des missions. Activité freelance déclarée, plusieurs événements couverts chaque année depuis 2021.",
+        desc: "Site utilisé activement pour acquérir des missions. <strong>Activité freelance déclarée</strong>, plusieurs événements couverts chaque année <strong>depuis 2021</strong>.",
       },
     ],
   },
@@ -108,22 +108,22 @@ const projects: Project[] = [
       {
         num: '01',
         title: 'ÉTUDE DE MARCHÉ',
-        desc: "Analyse du secteur du sport amateur. Identification du problème central : trouver des partenaires disponibles et géolocalisés est trop complexe.",
+        desc: "Analyse du secteur du <strong>sport amateur</strong>. Identification du problème central : trouver des <strong>partenaires disponibles et géolocalisés</strong> est trop complexe.",
       },
       {
         num: '02',
         title: 'CONCEPTION UX',
-        desc: "Parcours utilisateur complet : inscription → profil sportif → géolocalisation → matching → organisation de match. Maquettes fil de fer et prototypes.",
+        desc: "Parcours utilisateur complet : inscription → profil sportif → <strong>géolocalisation</strong> → <strong>matching</strong> → organisation de match. Maquettes fil de fer et prototypes interactifs.",
       },
       {
         num: '03',
         title: 'MODÈLE ÉCONOMIQUE',
-        desc: "Stratégie freemium définie. Analyse compétitive, projections de revenus sur 3 ans, identification des partenaires stratégiques (clubs, équipementiers).",
+        desc: "Stratégie <strong>freemium</strong> définie. Analyse compétitive, <strong>projections de revenus sur 3 ans</strong>, identification des partenaires stratégiques (clubs, équipementiers).",
       },
       {
         num: '04',
         title: 'PITCH INVESTISSEURS',
-        desc: "Deck complet présenté devant jury simulé : différenciation, go-to-market, KPIs cibles, démonstration des maquettes interactives.",
+        desc: "Deck complet présenté devant jury simulé : différenciation, <strong>go-to-market</strong>, <strong>KPIs cibles</strong>, démonstration des maquettes interactives.",
       },
     ],
   },
@@ -142,22 +142,22 @@ const projects: Project[] = [
       {
         num: '01',
         title: 'NETTOYAGE DES DONNÉES',
-        desc: "Traitement d'une base de milliers d'accidents routiers français. Identification et correction des valeurs aberrantes, doublons et champs manquants via SQL.",
+        desc: "Traitement d'une base de <strong>milliers d'accidents routiers français</strong>. Identification et correction des <strong>valeurs aberrantes</strong>, doublons et champs manquants via SQL.",
       },
       {
         num: '02',
         title: 'ANALYSE STATISTIQUE',
-        desc: "Requêtes SQL avancées : croisements par heure, météo, type de route, département. Extraction des patterns de dangerosité et corrélations.",
+        desc: "Requêtes <strong>SQL avancées</strong> : croisements par heure, météo, type de route, département. Extraction des <strong>patterns de dangerosité</strong> et corrélations.",
       },
       {
         num: '03',
         title: 'VISUALISATION',
-        desc: "Construction de dashboards Looker Studio : filtres interactifs, cartes de chaleur géographiques, graphiques de tendance temporelle.",
+        desc: "Construction de <strong>dashboards Looker Studio</strong> : filtres interactifs, <strong>cartes de chaleur géographiques</strong>, graphiques de tendance temporelle.",
       },
       {
         num: '04',
         title: 'RESTITUTION',
-        desc: "Rapport final structuré présentant les 5 zones à risque prioritaires, les facteurs aggravants identifiés et les recommandations de prévention.",
+        desc: "Rapport final présentant les <strong>5 zones à risque prioritaires</strong>, les facteurs aggravants identifiés et les <strong>recommandations de prévention</strong>.",
       },
     ],
   },
@@ -176,22 +176,22 @@ const projects: Project[] = [
       {
         num: '01',
         title: 'AUDIT DIGITAL',
-        desc: "Analyse complète des canaux d'acquisition de Beïtea : réseaux sociaux, SEO local, avis clients, tunnel de conversion. Benchmark concurrentiel.",
+        desc: "Analyse complète des canaux d'acquisition : <strong>réseaux sociaux, SEO local</strong>, avis clients, <strong>tunnel de conversion</strong>. Benchmark concurrentiel.",
       },
       {
         num: '02',
         title: 'ANALYSE COMPORTEMENTALE',
-        desc: "Étude des comportements clients : fréquence d'achat, profils d'acheteurs types, pics d'activité horaires. Identification des leviers sous-exploités.",
+        desc: "Étude des comportements clients : <strong>fréquence d'achat</strong>, <strong>profils d'acheteurs types</strong>, pics d'activité. Identification des <strong>leviers sous-exploités</strong>.",
       },
       {
         num: '03',
         title: 'STRATÉGIE & DÉPLOIEMENT',
-        desc: "Mise en place de campagnes d'acquisition digitales ciblées. Optimisation de la présence sociale et locale. Actions concrètes sur les 3 leviers prioritaires.",
+        desc: "Mise en place de <strong>campagnes d'acquisition digitales</strong> ciblées. Actions concrètes sur les <strong>3 leviers prioritaires</strong> identifiés lors de l'audit.",
       },
       {
         num: '04',
         title: 'MESURE DES RÉSULTATS',
-        desc: "Suivi rigoureux sur 30 jours : KPIs définis en amont, mesure des écarts, analyse des actions. Rapport de performance complet remis à la direction.",
+        desc: "Suivi rigoureux sur <strong>30 jours</strong> : <strong>KPIs définis en amont</strong>, mesure des écarts, analyse des actions. Rapport complet remis à la direction.",
       },
     ],
   },
@@ -199,12 +199,22 @@ const projects: Project[] = [
 
 // ─── CANVA MODAL ──────────────────────────────────────────────────────────────
 
-function CanvaModal({ embedUrl, title, onClose }: { embedUrl: string; title: string; onClose: () => void }) {
+function CanvaModal({ embedUrl, title, onClose, directLink }: {
+  embedUrl: string; title: string; onClose: () => void; directLink: string
+}) {
+  const [failed, setFailed] = useState(false)
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
-    return () => { document.removeEventListener('keydown', onKey); document.body.style.overflow = '' }
+    // Fallback si l'iframe ne charge pas en 6s
+    const timeout = setTimeout(() => setFailed(true), 6000)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = ''
+      clearTimeout(timeout)
+    }
   }, [onClose])
 
   return (
@@ -213,12 +223,30 @@ function CanvaModal({ embedUrl, title, onClose }: { embedUrl: string; title: str
         <div className="canva-modal-header">
           <span className="canva-modal-label">DOSSIER DÉCLASSIFIÉ</span>
           <span className="canva-modal-title">{title}</span>
-          <button className="canva-modal-close" onClick={onClose} aria-label="Fermer">
-            ✕ FERMER
-          </button>
+          <button className="canva-modal-close" onClick={onClose} aria-label="Fermer">✕ FERMER</button>
         </div>
         <div className="canva-modal-body">
-          <iframe src={embedUrl} className="canva-iframe" allowFullScreen title={title} loading="lazy" />
+          {failed ? (
+            <div className="canva-fallback">
+              <span className="canva-fallback-text">
+                La présentation ne peut pas s&apos;afficher ici.<br />
+                Active le partage public sur Canva ou consulte-la directement.
+              </span>
+              <a href={directLink} target="_blank" rel="noopener noreferrer" className="canva-fallback-btn">
+                OUVRIR SUR CANVA →
+              </a>
+            </div>
+          ) : (
+            <iframe
+              src={embedUrl}
+              className="canva-iframe"
+              allowFullScreen
+              title={title}
+              loading="lazy"
+              onLoad={() => setFailed(false)}
+              onError={() => setFailed(true)}
+            />
+          )}
         </div>
       </div>
     </div>
@@ -238,7 +266,7 @@ function ProcessModal({ project, onClose }: { project: Project; onClose: () => v
   }, [onClose])
 
   if (showEmbed && project.embedUrl) {
-    return <CanvaModal embedUrl={project.embedUrl} title={project.title} onClose={() => setShowEmbed(false)} />
+    return <CanvaModal embedUrl={project.embedUrl} title={project.title} directLink={project.link} onClose={() => setShowEmbed(false)} />
   }
 
   return (
@@ -268,7 +296,8 @@ function ProcessModal({ project, onClose }: { project: Project; onClose: () => v
             <div key={step.num} className="process-step">
               <div className="process-step-num">ÉTAPE {step.num}</div>
               <div className="process-step-title">{step.title}</div>
-              <div className="process-step-desc">{step.desc}</div>
+              {/* eslint-disable-next-line react/no-danger */}
+              <div className="process-step-desc" dangerouslySetInnerHTML={{ __html: step.desc }} />
             </div>
           ))}
         </div>
