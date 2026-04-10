@@ -91,9 +91,21 @@ export default function Hero() {
                 <span className="op-label">MENACE</span>
                 <span className="op-sep" />
                 <div className="op-threat">
-                  <div className="op-threat-bar">
+                  <div className="op-stars">
                     {[1,2,3,4,5].map(i => (
-                      <div key={i} className={`op-seg${i <= 3 ? ' op-seg-on' : ''}`} />
+                      <svg
+                        key={i}
+                        className={`sheriff-star${i <= 3 ? ' star-on' : ''}`}
+                        viewBox="0 0 100 100"
+                        style={{ animationDelay: `${0.4 + i * 0.18}s` }}
+                        aria-hidden="true"
+                      >
+                        {/* Outer 6-pointed sheriff badge star */}
+                        <polygon className="star-bg" points="50,2 61,35 95,35 67,57 79,93 50,72 21,93 33,57 5,35 39,35" />
+                        <polygon className="star-fill" points="50,2 61,35 95,35 67,57 79,93 50,72 21,93 33,57 5,35 39,35" />
+                        {/* Center badge circle */}
+                        <circle className="star-badge-circle" cx="50" cy="52" r="12" />
+                      </svg>
                     ))}
                   </div>
                   <span className="op-threat-label">ÉLEVÉ</span>
