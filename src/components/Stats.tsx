@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from 'react'
 
 const stats = [
-  { value: 5,   suffix: '',  label: 'MISSIONS',   sub: 'ACCOMPLIES' },
-  { value: 3,   suffix: '+', label: 'ANS',         sub: 'DE TERRAIN' },
-  { value: 8,   suffix: '',  label: 'OUTILS IA',   sub: 'MAÎTRISÉS'  },
-  { value: 100, suffix: '%', label: 'TAUX DE',     sub: 'RÉUSSITE'   },
+  { value: 4,  suffix: '',  label: 'EXPÉRIENCES',  sub: 'PROFESSIONNELLES DÉCLARÉES' },
+  { value: 3,  suffix: '+', label: 'ANS',           sub: 'FREELANCE EN ACTIVITÉ'      },
+  { value: 92, suffix: '%', label: 'DE PRÉCISION',  sub: 'IA VOCALE — PROJET LVMH'   },
+  { value: 2,  suffix: '',  label: 'LANGUES',       sub: 'ANGLAIS B1/B2 · ESPAGNOL B1' },
 ]
 
 function Counter({ target, suffix }: { target: number; suffix: string }) {

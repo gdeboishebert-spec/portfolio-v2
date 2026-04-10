@@ -3,11 +3,11 @@
 import { useEffect, useRef } from 'react'
 
 const phrases = [
-  'Étudiant en Bachelor IA',
-  "Architecte de l'automatisation",
-  'Pilote de drone',
-  'Entrepreneur numérique',
-  "Chasseur d'opportunités",
+  'Étudiant Bachelor IA — Eugenia School',
+  'Développeur IA — LVMH',
+  'Créateur de sites web — Loon Agency',
+  'Pilote de drone freelance',
+  'Entrepreneur & chef scout',
 ]
 
 export default function Typewriter() {

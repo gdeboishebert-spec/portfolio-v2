@@ -82,7 +82,7 @@ export default function Hero() {
                 <span className="op-label">ACTIVITÉS</span>
                 <span className="op-sep" />
                 <span className="op-value">
-                  Drone &mdash; <span className="redacted" title="révéler">Entrepreneuriat</span>
+                  LVMH &mdash; Loon Agency &mdash; <span className="redacted" title="révéler">Drone Freelance</span>
                 </span>
               </div>
 

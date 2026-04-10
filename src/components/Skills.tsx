@@ -3,27 +3,28 @@
 import { useEffect, useRef, useState } from 'react'
 import type { IconType } from 'react-icons'
 import {
-  SiGooglegemini,
-  SiMake,
-  SiMistralai,
   SiPostgresql,
-  SiGooglesheets,
+  SiPython,
+  SiMake,
+  SiAnthropic,
+  SiAirtable,
+  SiGooglegemini,
   SiGithub,
-  SiLooker,
-  SiDrone,
+  SiNextdotjs,
 } from 'react-icons/si'
+import { VscVscode } from 'react-icons/vsc'
 
 type Phase = 'idle' | 'scanning' | 'done'
 
 const skills: { num: string; Icon: IconType; name: string; level: number; label: string }[] = [
-  { num: '001', Icon: SiGooglegemini,  name: 'Google Gemini',    level: 90, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '002', Icon: SiMake,          name: 'Make (Integromat)', level: 85, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '003', Icon: SiMistralai,     name: 'Mistral AI',        level: 80, label: 'OPÉRATIONNEL' },
-  { num: '004', Icon: SiPostgresql,    name: 'SQL / PostgreSQL',  level: 75, label: 'OPÉRATIONNEL' },
-  { num: '005', Icon: SiGooglesheets,  name: 'Google Sheets',     level: 88, label: 'MAÎTRISE CONFIRMÉE' },
-  { num: '006', Icon: SiDrone,         name: 'Pilotage Drone',    level: 92, label: 'EXPERT — 3+ ANS' },
-  { num: '007', Icon: SiGithub,        name: 'GitHub',            level: 78, label: 'OPÉRATIONNEL' },
-  { num: '008', Icon: SiLooker,        name: 'Looker Studio',     level: 72, label: 'OPÉRATIONNEL' },
+  { num: '001', Icon: SiGooglegemini, name: 'Google Gemini',      level: 90, label: 'MAÎTRISE CONFIRMÉE' },
+  { num: '002', Icon: SiMake,         name: 'Automatisation Make', level: 88, label: 'MAÎTRISE CONFIRMÉE' },
+  { num: '003', Icon: SiAnthropic,    name: 'Agent IA — Dust',     level: 82, label: 'OPÉRATIONNEL'       },
+  { num: '004', Icon: SiPostgresql,   name: 'SQL / PostgreSQL',    level: 80, label: 'OPÉRATIONNEL'       },
+  { num: '005', Icon: SiPython,       name: 'Python',              level: 78, label: 'OPÉRATIONNEL'       },
+  { num: '006', Icon: VscVscode,      name: 'LowCode — Cursor',    level: 80, label: 'OPÉRATIONNEL'       },
+  { num: '007', Icon: SiAirtable,     name: 'Airtable',            level: 80, label: 'OPÉRATIONNEL'       },
+  { num: '008', Icon: SiNextdotjs,    name: 'Next.js',             level: 75, label: 'OPÉRATIONNEL'       },
 ]
 
 function SkillCard({

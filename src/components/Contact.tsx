@@ -84,11 +84,15 @@ export default function Contact() {
         )}
 
         <div className={`contact-grid${phase === 'done' ? ' contact-revealed' : ''}`}>
-          <a className="contact-item" href="mailto:gdeboishebert@eugeniaschool.com">
-            <div className="contact-label">Canal Sécurisé</div>
+          <a className="contact-item" href="mailto:gasparddeboishebert@gmail.com">
+            <div className="contact-label">Email Personnel</div>
             <div className="contact-value">
-              gdeboishebert@<br />eugeniaschool.com
+              gasparddeboishebert<br />@gmail.com
             </div>
+          </a>
+          <a className="contact-item" href="tel:+33677427827">
+            <div className="contact-label">Ligne Directe</div>
+            <div className="contact-value">06 77 42 78 27</div>
           </a>
           <a
             className="contact-item"
